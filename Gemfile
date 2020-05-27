@@ -5,6 +5,7 @@ ruby "2.6.6"
 
 gem "bootsnap", "~> 1.4", ">= 1.4.6"
 gem "jbuilder", "~> 2.10"
+gem "mongoid", "~> 7.1", ">= 7.1.1"
 gem "puma", "~> 4.3", ">= 4.3.3"
 gem "rails", "~> 6.0.3", ">= 6.0.3.1"
 gem "sass-rails", "~> 6.0"
