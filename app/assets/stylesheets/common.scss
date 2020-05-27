@@ -10,3 +10,15 @@
 .navbar-brand {
   text-transform: uppercase;
 }
+
+.field_with_errors {
+  label {
+    color: #DC3545 !important;
+  }
+
+  input {
+    border-color: #DC3545 !important;
+    background-color: #F8D7DA !important;
+    color: #000000;
+  }
+}

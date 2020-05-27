@@ -1,0 +1,45 @@
+<% provide(:page_title, "Account Setting") %>
+
+<div class="row justify-content-center">
+  <div class="col-sm-12 mb-4">
+    <h3 class="text-center">Account Setting</h3>
+  </div>
+
+  <div class="col-sm-12 col-md-6">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "shared/error_messages", resource: resource %>
+
+      <div class="form-group">
+        <%= f.label :email, "Email Address" %>
+        <%= f.email_field :email, class: "form-control", required: true, placeholder: "Email Address", autofocus: true, autocomplete: "email", maxlength: 255 %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <small id="emailHelp" class="form-text text-muted">Email confirmation is waiting for <%= resource.unconfirmed_email %>.</small>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control", placeholder: "Password", minlength: 6, maxlength: 128, autocomplete: "new-password" %>
+        <small class='form-text text-muted'>Leave blank if you don't want to change it.</small>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Password Confirmation" %>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation", minlength: 6, maxlength: 128, autocomplete: "new-password" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :current_password, "Current Password" %>
+        <%= f.password_field :current_password, class: "form-control", required: true, placeholder: "Password", minlength: 6, maxlength: 128, autocomplete: "current-password" %>
+        <small class='form-text text-muted'>We need your current password to confirm your changes.</small>
+      </div>
+
+      <%= f.submit "Update Profile", class: "btn btn-primary", data: { disable_with: "Updating..." } %>
+    <% end %>
+
+    <hr class="mb-3">
+
+    <p>Do you want to delete your account? <%= link_to "Delete Account", registration_path(resource_name), method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %></p>
+  </div>
+</div>
