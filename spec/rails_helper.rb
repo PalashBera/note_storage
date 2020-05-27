@@ -7,8 +7,6 @@ require "database_cleaner"
 
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
 
-ActiveRecord::Migration.maintain_test_schema!
-
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -18,12 +16,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.before(:each) do
-    if RSpec.current_example.metadata[:js]
-      DatabaseCleaner.strategy = :truncation
-    else
-      DatabaseCleaner.strategy = :transaction
-    end
-
+    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
   end
 
