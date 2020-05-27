@@ -21,6 +21,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/navbar" %>
+
+    <div class="container" id="main_content">
+      <div class="card main-content-card">
+        <div class="card-body">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
