@@ -7,15 +7,15 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: "form-control d-none", autocomplete: :off, placeholder: "Write your note here..." %>
-    <trix-editor input="note_body"></trix-editor>
-  </div>
-
-  <div class="form-group">
     <%= f.label :tag_list %>
     <%= f.text_field :tag_list, value: @note.display_tags, class: "form-control", autocomplete: :off, placeholder: "Tags" %>
     <small id="tagsHelp" class="form-text text-muted">Tags are separate by ",".</small>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control d-none", autocomplete: :off, placeholder: "Write your note here..." %>
+    <trix-editor input="note_body"></trix-editor>
   </div>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary", data: { disable_with: "Saving..." } %>

@@ -30,8 +30,18 @@
           <%= link_to "Destroy", note, method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %>
         </section>
       </div>
+      <p>
+        <strong>Tags: </strong>
+
+        <% if note.tags.empty? %>
+          <small>No tag is present for this note.</small>
+        <% else %>
+          <% note.tags.each do |tag| %>
+            <span class="badge badge-secondary"><%= tag %></span>
+          <% end %>
+        <% end %>
+      </p>
       <p><%= note.body.html_safe %></p>
-      <p><strong>Tags: </strong><%= note.tags.empty? ? "<small>No tag is present for this note.</small>".html_safe : note.display_tags %></p>
       <hr class="my-3">
     </section>
   <% end %>
