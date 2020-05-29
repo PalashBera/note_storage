@@ -1,0 +1,25 @@
+<% provide(:page_title, "Notes") %>
+
+<section class="mb-4 d-flex justify-content-between">
+  <h3>Notes (<%= @notes.length %>)</h3>
+
+  <section>
+    <%= link_to "New Note", new_note_path, class: "btn btn-primary" %>
+  </section>
+</section>
+
+<% @notes.each.with_index(1) do |note, index| %>
+  <section>
+    <div class="d-flex justify-content-between">
+      <h3><%= note.title %></h3>
+
+      <section>
+        <%= link_to "Edit", edit_note_path(note), class: "text-info" %> |
+        <%= link_to "Destroy", note, method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %>
+      </section>
+    </div>
+    <p><%= note.body.html_safe %></p>
+    <p><strong>Tags: </strong><%= note.tags.empty? ? "<small>No tag is present for this note.</small>".html_safe : note.display_tags %></p>
+    <hr class="my-3">
+  </section>
+<% end %>

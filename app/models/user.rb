@@ -29,4 +29,6 @@ class User
   field :unconfirmed_email,    type: String # Only if using reconfirmable
 
   include Mongoid::Timestamps
+
+  has_many :notes, dependent: :destroy
 end

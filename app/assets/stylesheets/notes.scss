@@ -1,0 +1,14 @@
+.info-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+
+  label {
+    margin: 0;
+    opacity: 0.5;
+  }
+}
+
+.trix-button-group--file-tools {
+  display: none !important;
+}

@@ -1,0 +1,22 @@
+<%= form_for @note do |f| %>
+  <%= render "shared/error_messages", resource: @note %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control", autofocus: true, required: true, autocomplete: :off, placeholder: "Title" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control d-none", required: true, autocomplete: :off, placeholder: "Write your note here..." %>
+    <trix-editor input="note_body"></trix-editor>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list, value: @note.display_tags, class: "form-control", autocomplete: :off, placeholder: "Tags" %>
+    <small id="tagsHelp" class="form-text text-muted">Tags are separate by ",".</small>
+  </div>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary", data: { disable_with: "Saving..." } %>
+<% end %>
