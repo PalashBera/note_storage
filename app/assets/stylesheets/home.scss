@@ -1,0 +1,15 @@
+.welcome_page_container {
+  background-image: asset-url("landing_image.jpg");
+  height: calc(100vh - 132px);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
+}
+
+.welcome_text {
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0;
+  padding-top: calc(25vh);
+  font-weight: bold;
+}
