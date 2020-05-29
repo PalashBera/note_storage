@@ -5,6 +5,13 @@ require "rspec/rails"
 require "spec_helper"
 require "database_cleaner"
 require "support/controller_helpers"
+require "simplecov"
+
+SimpleCov.start "rails" do
+  add_filter "/bin/"
+  add_filter "/db/"
+  add_filter "/spec/"
+end
 
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
 
