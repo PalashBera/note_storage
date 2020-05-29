@@ -37,3 +37,5 @@ This is a simple note storage application using Ruby on Rails. For demo of this 
 ## Testing
 
 Rspec is there for unit testing. After running test suite one test coverage will be generated inside the project folder. For this test coverage *SimpleCov* has been used.
+
+![test coverage](https://github.com/PalashBera/note_storage/blob/master/vendor/coverage.png?raw=true)
