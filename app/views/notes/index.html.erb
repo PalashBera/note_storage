@@ -37,7 +37,7 @@
           <small>No tag is present for this note.</small>
         <% else %>
           <% note.tags.each do |tag| %>
-            <span class="badge badge-secondary"><%= tag %></span>
+            <span class="badge badge-<%= Note::TAG_CLASSES.sample %>"><%= tag %></span>
           <% end %>
         <% end %>
       </p>

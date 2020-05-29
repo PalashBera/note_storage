@@ -5,6 +5,8 @@ class Note
   field :title, type: String
   field :body, type: String
 
+  TAG_CLASSES = ["primary", "secondary", "success", "danger", "warning", "info", "dark"]
+
   taggable_on :tags
 
   belongs_to :user
