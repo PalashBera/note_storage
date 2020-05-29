@@ -1,10 +1,3 @@
-ENV["RAILS_ENV"] ||= "test"
-require File.expand_path("../config/environment", __dir__)
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-require "rspec/rails"
-require "spec_helper"
-require "database_cleaner"
-require "support/controller_helpers"
 require "simplecov"
 
 SimpleCov.start "rails" do
@@ -12,6 +5,14 @@ SimpleCov.start "rails" do
   add_filter "/db/"
   add_filter "/spec/"
 end
+
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path("../config/environment", __dir__)
+abort("The Rails environment is running in production mode!") if Rails.env.production?
+require "rspec/rails"
+require "spec_helper"
+require "database_cleaner"
+require "support/controller_helpers"
 
 Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f }
 
