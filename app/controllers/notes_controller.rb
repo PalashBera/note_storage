@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notes = current_user.notes.order_by_date
+    @notes = current_user.notes.search(params[:search])
   end
 
   def new

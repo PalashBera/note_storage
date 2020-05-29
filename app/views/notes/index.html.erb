@@ -8,18 +8,31 @@
   </section>
 </section>
 
-<% @notes.each.with_index(1) do |note, index| %>
-  <section>
-    <div class="d-flex justify-content-between">
-      <h3><%= note.title %></h3>
+<section class="mb-4">
+  <%= form_tag notes_path, method: :get, class: "form-inline" do %>
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control mr-2" %>
+    <%= submit_tag "Search", class: "btn btn-outline-success" %>
+  <% end %>
+</section>
 
-      <section>
-        <%= link_to "Edit", edit_note_path(note), class: "text-info" %> |
-        <%= link_to "Destroy", note, method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %>
-      </section>
-    </div>
-    <p><%= note.body.html_safe %></p>
-    <p><strong>Tags: </strong><%= note.tags.empty? ? "<small>No tag is present for this note.</small>".html_safe : note.display_tags %></p>
-    <hr class="my-3">
-  </section>
+<% if @notes.blank? && params[:search].present? %>
+  No note found with the search key.
+<% elsif @notes.blank? %>
+  These is no note currently. Please <%= link_to "create", new_note_path %> a note.
+<% else %>
+  <% @notes.each.with_index(1) do |note, index| %>
+    <section>
+      <div class="d-flex justify-content-between">
+        <h3><%= note.title %></h3>
+
+        <section>
+          <%= link_to "Edit", edit_note_path(note), class: "text-info" %> |
+          <%= link_to "Destroy", note, method: :delete, data: { confirm: "Are you sure?" }, class: "text-danger" %>
+        </section>
+      </div>
+      <p><%= note.body.html_safe %></p>
+      <p><strong>Tags: </strong><%= note.tags.empty? ? "<small>No tag is present for this note.</small>".html_safe : note.display_tags %></p>
+      <hr class="my-3">
+    </section>
+  <% end %>
 <% end %>

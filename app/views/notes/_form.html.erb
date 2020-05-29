@@ -8,7 +8,7 @@
 
   <div class="form-group">
     <%= f.label :body %>
-    <%= f.text_area :body, class: "form-control d-none", required: true, autocomplete: :off, placeholder: "Write your note here..." %>
+    <%= f.text_area :body, class: "form-control d-none", autocomplete: :off, placeholder: "Write your note here..." %>
     <trix-editor input="note_body"></trix-editor>
   </div>
 
@@ -19,4 +19,5 @@
   </div>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary", data: { disable_with: "Saving..." } %>
+  <%= link_to "Back", notes_path, class: "btn btn-secondary" %>
 <% end %>

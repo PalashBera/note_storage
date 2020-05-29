@@ -17,15 +17,9 @@ RSpec.describe Note, type: :model do
       end
     end
 
-    context "when body is not present" do
-      it "should not validate the note" do
-        expect(FactoryBot.build(:note, body: "")).to_not be_valid
-      end
-    end
-
     context "when title and body is present and title is not taken" do
       it "should validate the note" do
-        expect(FactoryBot.build(:note, title: "Personal Note", body: "I am happy.", user: user)).to be_valid
+        expect(FactoryBot.build(:note, title: "Personal Note", user: user)).to be_valid
       end
     end
   end
@@ -33,6 +27,26 @@ RSpec.describe Note, type: :model do
   describe "#display_tags" do
     it "should return tags" do
       expect(note.display_tags).to eq("demo, note")
+    end
+  end
+
+  describe "#search" do
+    context "when passing no search params" do
+      it "should return note" do
+        expect(user.notes.search(nil)).to eq([note])
+      end
+    end
+
+    context "when passing valid search params" do
+      it "should return note with this keyword" do
+        expect(user.notes.search("Note")).to eq([note])
+      end
+    end
+
+    context "when passing invalid search params" do
+      it "should return no note with this keyword" do
+        expect(user.notes.search("hello Note")).to eq([])
+      end
     end
   end
 end
